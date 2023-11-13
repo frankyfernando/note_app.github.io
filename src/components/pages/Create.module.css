@@ -1,5 +1,6 @@
 .container {
   background: #6a6a6a;
+  min-height: 1020px;
 }
 .form {
   display: flex;
@@ -42,4 +43,45 @@
 }
 .button:hover{
     background-color: rgb(107, 201, 255);
+}
+@media only screen and (max-width: 760px){
+  .input, .textarea{
+    width: 600px;
+  }
+  .bcontainer {
+    width: 640px;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+@media only screen and (max-width: 660px){
+  .input, .textarea{
+    width: 500px;
+  }
+  .bcontainer {
+    width: 540px;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+@media only screen and (max-width: 555px){
+  .input, .textarea{
+    width: 400px;
+  }
+  .bcontainer {
+    width: 440px;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+@media only screen and (max-width: 460px){
+  .input, .textarea{
+    width: 300px;
+  }
+  .bcontainer {
+    width: 340px;
+    display: flex;
+    justify-content: flex-end;
+  }
 }

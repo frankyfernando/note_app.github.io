@@ -7,7 +7,7 @@ function Calender() {
   return (
     <div className={styles.container}>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <StaticDatePicker orientation="landscape"/>
+        <StaticDatePicker orientation="landscape" sx={{boxShadow:"4px 5px 4px 0px #5e5e5e"}}/>
       </LocalizationProvider>
     </div>
     )

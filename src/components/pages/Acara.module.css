@@ -1,11 +1,11 @@
 .container {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   flex-direction: column;
   background: #6a6a6a;
-  height: 100vh;
+  min-height: 1000px;
 }
-
 .input {
   margin-top: 40px;
   width: 250px;
@@ -32,7 +32,6 @@
   border: 1px solid #8706a7;
   background: #fff;
   box-shadow: 7px 6px 4px 0px rgba(0, 0, 0, 0.25);
-  cursor: pointer;
 }
 .h1{
   margin: 0;
@@ -45,15 +44,20 @@
   padding: 0;
   height: 100px;
 }
-.button{
-  color: red;
-  font-weight: bold;
-  cursor: pointer;
-  border: none;
-  font-size: 30px;
-  background-color: white;
-}
 .bcontainer{
   display: flex;
   justify-content: flex-end;
+}
+
+@media only screen and (max-width: 990px){
+  .Ncontainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media only screen and (max-width: 650px){
+  .Ncontainer{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }

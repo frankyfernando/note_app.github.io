@@ -14,7 +14,7 @@ function Layout() {
 
   return (
     <div className={styles.container}>
-      <header>
+      <header className={styles.header}>
         <div className={styles.navigate}>
           <ul className={styles.ul}>
             <li>

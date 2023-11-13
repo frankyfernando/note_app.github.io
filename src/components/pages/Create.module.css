@@ -1,0 +1,45 @@
+.container {
+  background: #6a6a6a;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.input {
+  box-shadow: 9px 9px 4px 0px rgba(0, 0, 0, 0.25);
+  border: none;
+  border-radius: 5px;
+  width: 700px;
+  height: 50px;
+  margin-top: 50px;
+  padding-left: 20px;
+}
+.textarea {
+  width: 700px;
+  height: 300px;
+  padding-left: 20px;
+  padding-top: 20px;
+  box-shadow: 9px 9px 4px 0px rgba(0, 0, 0, 0.25);
+  border: none;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+.bcontainer {
+  width: 740px;
+  display: flex;
+  justify-content: flex-end;
+}
+.button {
+    font-weight: bold;
+  width: 100px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 100px;
+  margin: 20px 10px 10px 0;
+  border: none;
+  cursor: pointer;
+}
+.button:hover{
+    background-color: rgb(107, 201, 255);
+}

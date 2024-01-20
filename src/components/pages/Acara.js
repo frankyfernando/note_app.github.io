@@ -3,14 +3,13 @@ import style from "./Acara.module.css";
 import {BiSearch} from "react-icons/bi";
 import {MdDelete} from "react-icons/md";
 import axios from "axios";
-function Acara(props) {
+function Acara() {
   const [data, setData] = useState([])
   const getNote = async() => {
     try {
       const token = localStorage.getItem("token")
       const response = await axios.post("http://localhost:3031/layout/acara", {token: token})
-      setData([...data, {"judul": response.data.note.judul, "catatan": response.data.note.catatan}])
-
+      setData({"judul": response.data.note[0].judul, "catatan": response.data.note[0].catatan})
     } catch (error) {
       console.log("gagal mengambil data", error.message)
     }
@@ -20,25 +19,25 @@ function Acara(props) {
   const limitTitle = (title) =>{
     return([...title.slice(0,20), "..."])
   }
-  useEffect(()=>{
-    setFilterJd(props.data)
+  useEffect(()=> {
+    getNote()
   },[])
   useEffect(() => {
     const filter = setTimeout(()=> {
-      setFilterJd([...props.data.filter((filterNote) => {
+      setFilterJd([...data.filter((filterNote) => {
         return filterNote.judul.toLowerCase().includes(keyword.toLowerCase())
       })])
     }, 1000)
     return () => {
       clearTimeout(filter);
     }
-  }, [keyword,props.data])
+  }, [keyword,data])
 
   const removeHandler = (index) => {
     const newNotes = [...filterJd]
     newNotes.splice(index, 1)
     setFilterJd(newNotes)
-    props.setData(newNotes)
+    setData(newNotes)
   }
   const styleSearch = {
     margin: "-38px 250px 0 0",

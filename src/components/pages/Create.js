@@ -19,9 +19,6 @@ function Create(props) {
       setJudul("")
       setCatatan("")
     }
-    const simpan = () =>{
-      props.data(judul, catatan)
-    }
     const batal = () =>{
       setJudul("")
       setCatatan("")
@@ -33,7 +30,7 @@ function Create(props) {
         <textarea className={style.textarea} value={catatan} onChange={(e) => {setCatatan(e.target.value)}} placeholder="Catatan" name="catatan" cols="30" rows="10"></textarea>
         <div className={style.bcontainer}>
             <button className={style.button} onClick={batal}>Batal</button>
-            <button className={style.button} onClick={simpan} type="submit">Simpan</button>
+            <button className={style.button} type="submit">Simpan</button>
         </div>
       </form>
     </div>

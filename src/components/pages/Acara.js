@@ -2,7 +2,19 @@ import React, { useEffect, useState } from "react";
 import style from "./Acara.module.css";
 import {BiSearch} from "react-icons/bi";
 import {MdDelete} from "react-icons/md";
+import axios from "axios";
 function Acara(props) {
+  const [data, setData] = useState([])
+  const getNote = async() => {
+    try {
+      const token = localStorage.getItem("token")
+      const response = await axios.post("http://localhost:3031/layout/acara", {token: token})
+      setData([...data, {"judul": response.data.note.judul, "catatan": response.data.note.catatan}])
+
+    } catch (error) {
+      console.log("gagal mengambil data", error.message)
+    }
+  }
   const [keyword, setKeyword] = useState("")
   const [filterJd, setFilterJd] = useState([])
   const limitTitle = (title) =>{
@@ -41,7 +53,7 @@ function Acara(props) {
     <div className={style.container}>
       <input className={style.input} type="text" placeholder="Search" onChange={(e) => {setKeyword(e.target.value)}}/>
       <BiSearch style={styleSearch}/>
-      <div className={style.Ncontainer}>
+      <div refresh={getNote} className={style.Ncontainer}>
         {filterJd.map((data, index) => (
           <div className={style.note} key={index}>
             <div className={style.bcontainer} key={index}>

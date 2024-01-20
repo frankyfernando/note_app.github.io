@@ -1,28 +1,20 @@
 import { useState, React } from "react";
 import styles from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios'
 function Login() {
   const[username, setUsername] = useState("")
   const[password, setPassword] = useState("")
   const navigate = useNavigate();
-  const inputUsername = document.getElementById("inputUsername")
-  const inputPassword = document.getElementById("inputPassword")
-  const handleClick = (e) => {
+  const handleClick = async(e) => {
     e.preventDefault();
-    if(username === "admin" && password === "admin"){
-      navigate("/layout")
-    }
-    else if(username === "admin" && password !== "admin"){
-      inputPassword.className = styles.inputError
-      inputUsername.className = styles.inputUsername
-    }
-    else if(username !== "admin" && password === "admin"){
-      inputUsername.className = styles.inputError
-      inputPassword.className = styles.inputPassword
-    }
-    else{
-      inputUsername.className = styles.inputError
-      inputPassword.className = styles.inputError
+    try {
+      const response = await axios.post("http://localhost:3031",{username, password})
+      const token = response.data.token
+      localStorage.setItem("token", token)
+      navigate("/layout/")
+    } catch (err) {
+      console.log("Login gagal", err.message)
     }
       
     }

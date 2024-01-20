@@ -1,10 +1,21 @@
 import {useState, React} from "react";
-import style from "./Create.module.css"
+import style from "./Create.module.css";
+import axios from "axios";
 function Create(props) {
     const [judul, setJudul] = useState("")
     const [catatan, setCatatan] = useState("")
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
       e.preventDefault();
+      try {
+        const token = localStorage.getItem("token")
+        const response = await axios.post("http://localhost:3031/layout/createnote", {
+          token: token,
+          judul: judul,
+          catatan: catatan,
+        })
+      } catch (error) {
+        console.log("gagal input", error.message)
+      }
       setJudul("")
       setCatatan("")
     }

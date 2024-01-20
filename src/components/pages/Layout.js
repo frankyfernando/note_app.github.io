@@ -10,7 +10,10 @@ const linkStyle = {
 };
 function Layout() {
   const navigate = useNavigate();
-  const handleClick = () => navigate("/");
+  const handleClick = () => {
+    navigate("/")
+    localStorage.clear("token")
+  }
 
   return (
     <div className={styles.container}>

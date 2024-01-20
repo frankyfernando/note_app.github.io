@@ -9,13 +9,14 @@ function Acara() {
     try {
       const token = localStorage.getItem("token")
       const response = await axios.post("http://localhost:3031/layout/acara", {token: token})
-      setData({"judul": response.data.note[0].judul, "catatan": response.data.note[0].catatan})
+      setData(response.data.note)
+      console.log(data)
     } catch (error) {
       console.log("gagal mengambil data", error.message)
     }
   }
   const [keyword, setKeyword] = useState("")
-  const [filterJd, setFilterJd] = useState([])
+  const [filterNote, setFilterNote] = useState([])
   const limitTitle = (title) =>{
     return([...title.slice(0,20), "..."])
   }
@@ -23,20 +24,20 @@ function Acara() {
     getNote()
   },[])
   useEffect(() => {
-    const filter = setTimeout(()=> {
-      setFilterJd([...data.filter((filterNote) => {
+    const filterContact = setTimeout(()=> {
+      setFilterNote([...data.filter((filterNote) => {
         return filterNote.judul.toLowerCase().includes(keyword.toLowerCase())
       })])
     }, 1000)
     return () => {
-      clearTimeout(filter);
+      clearTimeout(filterContact);
     }
   }, [keyword,data])
 
   const removeHandler = (index) => {
-    const newNotes = [...filterJd]
+    const newNotes = [...data]
     newNotes.splice(index, 1)
-    setFilterJd(newNotes)
+    setFilterNote(newNotes)
     setData(newNotes)
   }
   const styleSearch = {
@@ -53,7 +54,7 @@ function Acara() {
       <input className={style.input} type="text" placeholder="Search" onChange={(e) => {setKeyword(e.target.value)}}/>
       <BiSearch style={styleSearch}/>
       <div refresh={getNote} className={style.Ncontainer}>
-        {filterJd.map((data, index) => (
+        {filterNote.map((data, index) => (
           <div className={style.note} key={index}>
             <div className={style.bcontainer} key={index}>
               <MdDelete style={removeButton} onClick={removeHandler}/>

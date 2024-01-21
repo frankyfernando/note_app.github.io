@@ -27,6 +27,7 @@ function Login() {
           <div className={styles.input}>
             <input type="text" id="inputUsername" className={styles.inputUsername} placeholder="username" onChange={(e) => {setUsername(e.target.value)}} value={username}/>
             <input type="password" id="inputPassword" placeholder="password" className={styles.inputPassword} onChange={(e) => setPassword(e.target.value)} value={password}/>
+            <p>Tidak punya akun?</p>
           </div>
           <button type="submit" className={styles.button}>Login</button>
         </div>

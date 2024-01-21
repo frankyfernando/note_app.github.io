@@ -1,6 +1,6 @@
 import { useState, React } from "react";
 import styles from "./Login.module.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios'
 function Login() {
   const[username, setUsername] = useState("")
@@ -27,7 +27,7 @@ function Login() {
           <div className={styles.input}>
             <input type="text" id="inputUsername" className={styles.inputUsername} placeholder="username" onChange={(e) => {setUsername(e.target.value)}} value={username}/>
             <input type="password" id="inputPassword" placeholder="password" className={styles.inputPassword} onChange={(e) => setPassword(e.target.value)} value={password}/>
-            <p>Tidak punya akun?</p>
+            <p>Tidak punya akun? <Link to="/signup">Register Here</Link></p>
           </div>
           <button type="submit" className={styles.button}>Login</button>
         </div>
